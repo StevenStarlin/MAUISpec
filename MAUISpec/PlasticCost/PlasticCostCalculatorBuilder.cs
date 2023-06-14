@@ -4,10 +4,12 @@
     {
         // I prefer the syntactic cleanliness of builder classes.
         private decimal _taxRate;
+        private Spool _spool;
 
-        public PlasticCostCalculatorBuilder() 
-        { 
-        
+        public PlasticCostCalculatorBuilder WithSpool(Spool spool)
+        {
+            _spool = spool;
+            return this;
         }
 
         public PlasticCostCalculatorBuilder WithTaxRate(decimal taxRate)
@@ -18,7 +20,7 @@
 
         public PlasticCostCalculator Assemble()
         {
-            return new PlasticCostCalculator(_taxRate);
+            return new PlasticCostCalculator(_taxRate, _spool);
         }
     }
 }
