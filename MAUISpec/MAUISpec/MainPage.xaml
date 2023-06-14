@@ -9,30 +9,66 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
             <Label
-                Text="Hello, World!"
+                Text="Part Weight (g)"
                 SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
                 HorizontalOptions="Center" />
 
+            <Entry
+                Text="{Binding PartWeight}"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center" />
+
+            <Label
+                Text="Spool Weight (g)"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Entry
+                Text="{Binding SpoolWeight}"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center" />
+
+            <Label
+                Text="Spool Cost (USD)"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Entry
+                Text="{Binding SpoolCost}"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center" />
+
+            <Label
+                Text="Tax Rate (%)"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Entry
+                Text="{Binding TaxRate}"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center" />
+
             <Button
                 x:Name="CounterBtn"
-                Text="Click me"
+                Text="Calculate"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Clicked="OnCalculateClicked"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding PartCost}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="32"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

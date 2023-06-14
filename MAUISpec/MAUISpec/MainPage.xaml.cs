@@ -1,24 +1,22 @@
-﻿namespace MAUISpec;
+﻿using MAUISpec.Controllers;
+
+namespace MAUISpec;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	private MainPageController _controller;
 
 	public MainPage()
 	{
 		InitializeComponent();
+
+		_controller = new MainPageController();
+		BindingContext = _controller;
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private void OnCalculateClicked(object sender, EventArgs e)
+    {
+		_controller.Calculate();
+    }
 }
 
