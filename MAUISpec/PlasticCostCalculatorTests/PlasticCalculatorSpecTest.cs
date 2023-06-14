@@ -38,22 +38,19 @@ namespace PlasticCostCalculatorTests
         public void CalculatePlasticCostSpec()
         {
             // Arrange
-            /*
-             * Introducing the concept of a spool of filament
-             * The builder class is introduced from the outset
-             * because I know it'll be cleaner than direct injection.
-             * 
-             * It's immature for now, but we're going to expand it 
-             * later to handle some basic logic.
-             */
             var spool = new SpoolBuilder()
                 .WithSpoolWeight(1000m)
                 .WithSpoolCost(20m)
+                .WithTaxRate(6m)
                 .Assemble();
 
+            /*
+             * I purposely put tax rate on the plastic cost calculator
+             * So I show the ease of moving interests. That's this commit.
+             */
+
             var calculator = new PlasticCostCalculatorBuilder()
-                .WithSpool(spool)
-                .WithTaxRate(6m)
+                .WithSpool(spool) // I added spool too early, but I've removed it's efficacy for this.
                 .Assemble();
 
             // Act
@@ -61,8 +58,8 @@ namespace PlasticCostCalculatorTests
             var cost = calculator.Calculate(10m);
 
             // Assert
-            cost.Should().Be(10.6m);
-            spoolCost.Should().Be(0.02m);
+            cost.Should().Be(10m);
+            spoolCost.Should().Be(0.0212m);
         }
     }
 }

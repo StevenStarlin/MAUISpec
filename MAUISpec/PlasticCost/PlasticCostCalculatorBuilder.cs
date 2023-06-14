@@ -20,7 +20,7 @@
 
         public PlasticCostCalculator Assemble()
         {
-            return new PlasticCostCalculator(_taxRate, _spool);
+            return new PlasticCostCalculator(_taxRate);
         }
     }
 }

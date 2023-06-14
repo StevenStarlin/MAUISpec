@@ -10,6 +10,7 @@ namespace PlasticCost
     {
         private decimal _spoolWeight;
         private decimal _spoolCost;
+        private decimal _taxRate;
 
         public SpoolBuilder WithSpoolWeight(decimal spoolWeight)
         {
@@ -23,9 +24,15 @@ namespace PlasticCost
             return this;
         }
 
+        public SpoolBuilder WithTaxRate(decimal taxRate)
+        {
+            _taxRate = taxRate;
+            return this;
+        }
+
         public Spool Assemble()
         {
-            return new Spool(_spoolWeight, _spoolCost);
+            return new Spool(_spoolWeight, _spoolCost, _taxRate);
         }
     }
 }
