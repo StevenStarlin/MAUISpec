@@ -13,6 +13,10 @@
             _taxRate = taxRate;
         }
 
+        /// <summary>
+        /// Spool cost * Positive Tax rate / Spool weight in grams
+        /// </summary>
+        /// <returns>Cost per gram of filament material</returns>
         public decimal Calculate()
         {
             var decimalTaxRate = 1 + _taxRate / 100;

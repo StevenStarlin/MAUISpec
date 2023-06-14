@@ -9,15 +9,22 @@ namespace PlasticCostCalculatorTests.UnitTests
         [Fact]
         public void Calculator_WhenCalculating_ShouldCalculateACost()
         {
+            var spool = new SpoolBuilder()
+                .WithSpoolWeight(1000m)
+                .WithSpoolCost(20m)
+                .WithTaxRate(6m)
+                .Assemble();
+
             // Arrange
             var calculator = new PlasticCostCalculatorBuilder()
+                .WithSpool(spool)
                 .Assemble();
 
             // Act
             var cost = calculator.Calculate(10m);
 
             // Assert
-            cost.Should().Be(10m);
+            cost.Should().Be(0.212m);
         }
 
         [Fact]

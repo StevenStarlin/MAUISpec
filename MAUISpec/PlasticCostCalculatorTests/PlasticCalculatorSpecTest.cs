@@ -44,7 +44,12 @@ namespace PlasticCostCalculatorTests
                 .WithTaxRate(6m)
                 .Assemble();
 
+            /*
+             * Spool now needs to be considered in our plastic cost
+             */
+
             var calculator = new PlasticCostCalculatorBuilder()
+                .WithSpool(spool)
                 .Assemble();
 
             // Act
@@ -52,7 +57,7 @@ namespace PlasticCostCalculatorTests
             var cost = calculator.Calculate(10m);
 
             // Assert
-            cost.Should().Be(10m);
+            cost.Should().Be(0.212m); // Updated to the exact value of the calculation to fail the spec
             spoolCost.Should().Be(0.0212m);
         }
     }
