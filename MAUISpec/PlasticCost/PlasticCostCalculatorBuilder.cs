@@ -2,7 +2,6 @@
 {
     public class PlasticCostCalculatorBuilder
     {
-        // I prefer the syntactic cleanliness of builder classes.
         private decimal _taxRate;
         private Spool _spool;
 
