@@ -44,13 +44,7 @@ namespace PlasticCostCalculatorTests
                 .WithTaxRate(6m)
                 .Assemble();
 
-            /*
-             * I purposely put tax rate on the plastic cost calculator
-             * So I show the ease of moving interests. That's this commit.
-             */
-
             var calculator = new PlasticCostCalculatorBuilder()
-                .WithSpool(spool) // I added spool too early, but I've removed it's efficacy for this.
                 .Assemble();
 
             // Act

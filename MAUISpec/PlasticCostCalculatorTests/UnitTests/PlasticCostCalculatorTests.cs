@@ -10,13 +10,7 @@ namespace PlasticCostCalculatorTests.UnitTests
         public void Calculator_WhenCalculating_ShouldCalculateACost()
         {
             // Arrange
-            var spool = new SpoolBuilder()
-                .WithSpoolWeight(1000m)
-                .WithTaxRate(6m)
-                .Assemble();
-
             var calculator = new PlasticCostCalculatorBuilder()
-                .WithSpool(spool)
                 .Assemble();
 
             // Act
