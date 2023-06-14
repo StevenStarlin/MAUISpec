@@ -9,6 +9,7 @@ namespace PlasticCost
     public class SpoolBuilder
     {
         private decimal _spoolWeight;
+        private decimal _spoolCost;
 
         public SpoolBuilder WithSpoolWeight(decimal spoolWeight)
         {
@@ -16,9 +17,15 @@ namespace PlasticCost
             return this;
         }
 
+        public SpoolBuilder WithSpoolCost(decimal spoolCost)
+        {
+            _spoolCost = spoolCost;
+            return this;
+        }
+
         public Spool Assemble()
         {
-            return new Spool(_spoolWeight);
+            return new Spool(_spoolWeight, _spoolCost);
         }
     }
 }

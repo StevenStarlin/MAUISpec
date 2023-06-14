@@ -48,6 +48,7 @@ namespace PlasticCostCalculatorTests
              */
             var spool = new SpoolBuilder()
                 .WithSpoolWeight(1000m)
+                .WithSpoolCost(20m)
                 .Assemble();
 
             var calculator = new PlasticCostCalculatorBuilder()
@@ -56,10 +57,12 @@ namespace PlasticCostCalculatorTests
                 .Assemble();
 
             // Act
+            var spoolCost = spool.Calculate();
             var cost = calculator.Calculate(10m);
 
             // Assert
             cost.Should().Be(10.6m);
+            spoolCost.Should().Be(0.02m);
         }
     }
 }

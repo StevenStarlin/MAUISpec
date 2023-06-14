@@ -25,5 +25,21 @@ namespace PlasticCostCalculatorTests.UnitTests
             // Assert
             cost.Should().Be(10.6m);
         }
+
+        [Fact]
+        public void Calculator_WhenCalculatingSpoolCost_ShouldConsiderWeightAndCost()
+        {
+            // Arrange
+            var spool = new SpoolBuilder()
+                .WithSpoolWeight(1000m)
+                .WithSpoolCost(20m)
+                .Assemble();
+
+            // Act
+            var spoolCost = spool.Calculate();
+
+            // Assert
+            spoolCost.Should().Be(0.02m);
+        }
     }
 }
