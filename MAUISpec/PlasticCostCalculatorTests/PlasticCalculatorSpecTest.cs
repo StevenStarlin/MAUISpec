@@ -38,18 +38,15 @@ namespace PlasticCostCalculatorTests
         public void CalculatePlasticCostSpec()
         {
             // Arrange
-            var calculator = new PlasticCostCalculator();
+            var calculator = new PlasticCostCalculatorBuilder()
+                .WithTaxRate(6m)
+                .Assemble();
 
             // Act
-            /* 
-             * Calculate now exists and our tests are passing, let's mature it.
-             * I expect calculate to require a part weight that I get from my 
-             * 3D printer in grams
-            */
             var cost = calculator.Calculate(10m);
 
             // Assert
-            cost.Should().Be(10m);
+            cost.Should().Be(10.6m);
         }
     }
 }

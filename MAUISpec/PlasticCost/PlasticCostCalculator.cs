@@ -1,14 +1,19 @@
 ﻿namespace PlasticCost
 {
-    // All the code in this file is included in all platforms.
     public class PlasticCostCalculator
     {
-        /*
-         * Dumbest return as possible for spec-driven maturity
-         */
+        private decimal _taxRate;
+
+        public PlasticCostCalculator(decimal taxRate)
+        {
+            _taxRate = taxRate;
+        }
+
         public decimal Calculate(decimal partWeight)
         {
-            return 1m * partWeight;
+            // This isn't a clean implementation of this logic,
+            // but we'll clean it up before we're done.
+            return partWeight * (1 + (_taxRate/100));
         }
     }
 }
