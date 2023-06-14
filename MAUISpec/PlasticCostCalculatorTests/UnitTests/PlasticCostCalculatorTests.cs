@@ -14,9 +14,7 @@ namespace PlasticCostCalculatorTests.UnitTests
 
             // Act
             /*
-             * We have a nearly identical test because the spec is
-             * still immature. The calculate function doesn't exist
-             * So let's add it to the PlasticCost project.
+             * Calculate now exists and our tests are passing, let's mature it.
              */
             var cost = calculator.Calculate();
 

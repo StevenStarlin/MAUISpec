@@ -42,9 +42,10 @@ namespace PlasticCostCalculatorTests
 
             // Act
             /* 
-             * Calculate doesn't exist yet. Let's go make a unit test for it in 
-             * PlasticCostCalculatorTests.UnitTests
-            */ 
+             * Calculate now exists and our tests are passing, let's mature it.
+             * I expect calculate to require a part weight that I get from my 
+             * 3D printer in grams
+            */
             var cost = calculator.Calculate();
 
             // Assert
