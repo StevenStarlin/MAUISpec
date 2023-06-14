@@ -42,3 +42,9 @@ and broken code continually (a lot of red squiggles), but I've found
 it easier after some practice. It's lower maintenance, alllows for 
 rapid pivoting, builds in tests inherently, and requires loosely 
 coupled development to truly work.
+
+## Build notes
+The PlasticCost.csproj is configured to render a NuGet package
+upon build. This package is referenced by the PlasticCostCalculatorTests 
+xUnit project, and will eventually be delivered to the MAUI UX as a 
+loosely-coupled dependency.
