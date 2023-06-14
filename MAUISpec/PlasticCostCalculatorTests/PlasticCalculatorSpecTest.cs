@@ -1,3 +1,6 @@
+using FluentAssertions;
+using PlasticCost;
+
 namespace PlasticCostCalculatorTests
 {
     public class PlasticCalculatorSpecTest
@@ -38,6 +41,10 @@ namespace PlasticCostCalculatorTests
             var calculator = new PlasticCostCalculator();
 
             // Act
+            /* 
+             * Calculate doesn't exist yet. Let's go make a unit test for it in 
+             * PlasticCostCalculatorTests.UnitTests
+            */ 
             var cost = calculator.Calculate();
 
             // Assert

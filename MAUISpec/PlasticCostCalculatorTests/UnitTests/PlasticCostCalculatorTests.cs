@@ -1,4 +1,5 @@
-﻿using PlasticCost;
+﻿using FluentAssertions;
+using PlasticCost;
 
 namespace PlasticCostCalculatorTests.UnitTests
 {
@@ -12,6 +13,11 @@ namespace PlasticCostCalculatorTests.UnitTests
             var calculator = new PlasticCostCalculator();
 
             // Act
+            /*
+             * We have a nearly identical test because the spec is
+             * still immature. The calculate function doesn't exist
+             * So let's add it to the PlasticCost project.
+             */
             var cost = calculator.Calculate();
 
             // Assert
