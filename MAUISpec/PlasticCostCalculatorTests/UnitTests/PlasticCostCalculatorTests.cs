@@ -13,13 +13,10 @@ namespace PlasticCostCalculatorTests.UnitTests
             var calculator = new PlasticCostCalculator();
 
             // Act
-            /*
-             * Calculate now exists and our tests are passing, let's mature it.
-             */
-            var cost = calculator.Calculate();
+            var cost = calculator.Calculate(10m);
 
             // Assert
-            cost.Should().Be(1m);
+            cost.Should().Be(10m);
         }
     }
 }

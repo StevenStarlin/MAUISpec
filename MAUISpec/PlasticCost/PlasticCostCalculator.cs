@@ -6,9 +6,9 @@
         /*
          * Dumbest return as possible for spec-driven maturity
          */
-        public decimal Calculate()
+        public decimal Calculate(decimal partWeight)
         {
-            return 1m;
+            return 1m * partWeight;
         }
     }
 }

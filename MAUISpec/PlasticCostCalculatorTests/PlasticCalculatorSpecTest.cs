@@ -46,10 +46,10 @@ namespace PlasticCostCalculatorTests
              * I expect calculate to require a part weight that I get from my 
              * 3D printer in grams
             */
-            var cost = calculator.Calculate();
+            var cost = calculator.Calculate(10m);
 
             // Assert
-            cost.Should().Be(1m);
+            cost.Should().Be(10m);
         }
     }
 }
