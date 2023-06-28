@@ -16,7 +16,7 @@
         }
 
         /// <summary>
-        /// Spool cost * Positive Tax rate / Spool weight in grams
+        /// Spool cost * Positive tax rate / Spool weight in grams
         /// </summary>
         /// <returns>Cost per gram of filament material</returns>
         public decimal CalculateCostByWeight()
@@ -24,6 +24,10 @@
             return _spoolCost * GetPositiveTaxRate() / _spoolWeight;
         }
 
+        /// <summary>
+        /// Spool cost * Positive tax rate / spool length in meters.
+        /// </summary>
+        /// <returns></returns>
         public decimal CalculateCostByLength()
         {
             // spoolCost * taxRate / spoolLength
