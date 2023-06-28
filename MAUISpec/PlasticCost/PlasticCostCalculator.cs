@@ -2,18 +2,21 @@
 {
     public class PlasticCostCalculator
     {
-        private decimal _taxRate;
         private Spool _spool;
 
-        public PlasticCostCalculator(decimal taxRate, Spool spool)
+        public PlasticCostCalculator(Spool spool)
         {
-            _taxRate = taxRate;
             _spool = spool;
         }
 
-        public decimal Calculate(decimal partWeight)
+        public decimal CalculateByWeight(decimal partWeight)
         {
-            return partWeight * _spool.Calculate();
+            return partWeight * _spool.CalculateCostByWeight();
+        }
+
+        public decimal CalculateByLength(decimal partLength)
+        {
+            return partLength * _spool.CalculateCostByLength();
         }
     }
 }

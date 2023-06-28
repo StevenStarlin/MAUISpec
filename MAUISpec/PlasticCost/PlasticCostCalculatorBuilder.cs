@@ -2,14 +2,7 @@
 {
     public class PlasticCostCalculatorBuilder
     {
-        private decimal _taxRate;
         private Spool _spool;
-
-        public PlasticCostCalculatorBuilder WithTaxRate(decimal taxRate)
-        {
-            _taxRate = taxRate;
-            return this;
-        }
 
         public PlasticCostCalculatorBuilder WithSpool(Spool spool)
         {
@@ -19,7 +12,7 @@
 
         public PlasticCostCalculator Assemble()
         {
-            return new PlasticCostCalculator(_taxRate, _spool);
+            return new PlasticCostCalculator(_spool);
         }
     }
 }

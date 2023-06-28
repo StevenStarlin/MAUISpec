@@ -5,6 +5,7 @@
         private decimal _spoolWeight;
         private decimal _spoolCost;
         private decimal _taxRate;
+        private decimal _spoolLength;
 
         public SpoolBuilder WithSpoolWeight(decimal spoolWeight)
         {
@@ -24,9 +25,15 @@
             return this;
         }
 
+        public SpoolBuilder WithSpoolLength(decimal spoolLength)
+        {
+            _spoolLength = spoolLength;
+            return this;
+        }
+
         public Spool Assemble()
         {
-            return new Spool(_spoolWeight, _spoolCost, _taxRate);
+            return new Spool(_spoolWeight, _spoolCost, _taxRate, _spoolLength);
         }
     }
 }
