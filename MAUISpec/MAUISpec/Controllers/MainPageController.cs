@@ -10,21 +10,50 @@ namespace MAUISpec.Controllers
      */
     internal class MainPageController : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #region [Private Fields]
+        private CultureInfo _cultureInfo => CultureInfo.CreateSpecificCulture("en-US");
+        private PlasticCostCalculator _plasticCostCalculator;
         private string _partWeight;
+        private string _partLength = "";
+        private string _spoolLength = "400";
         private string _spoolWeight = "1000";
         private string _spoolCost = "22.99";
         private string _taxRate = "6";
         private string _partCost = "0.00";
+        private bool _calculatePriceByWeight = false;
+        private bool _hideCalculateByLength = true;
+        #endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        #region [Public Properties]
         public string PartWeight
         {
             get => _partWeight;
             set
-            { 
+            {
                 _partWeight = value;
                 Broadcast(nameof(PartWeight));
+            }
+        }
+
+        public string PartLength
+        {
+            get => _partLength;
+            set
+            {
+                _partLength = value;
+                Broadcast(nameof(PartLength));
+            }
+        }
+
+        public string SpoolLength
+        {
+            get => _spoolLength;
+            set
+            {
+                _spoolLength = value;
+                Broadcast(nameof(SpoolLength));
             }
         }
 
@@ -68,9 +97,29 @@ namespace MAUISpec.Controllers
             }
         }
 
-        private PlasticCostCalculator _plasticCostCalculator;
+        public bool CalculatePriceByWeight
+        {
+            get => _calculatePriceByWeight;
+            set
+            {
+                _calculatePriceByWeight = value;
+                HideCalculateByLength = !_calculatePriceByWeight;
+                Broadcast(nameof(CalculatePriceByWeight));
+            }
+        }
+        public bool HideCalculateByLength
+        {
+            get { return _hideCalculateByLength; }
+            set
+            {
+                _hideCalculateByLength = value;
+                Broadcast(nameof(HideCalculateByLength));
+            }
+        }
 
-        internal void Calculate()
+        #endregion
+
+        private void CalculateByWeight()
         {
             decimal.TryParse(SpoolWeight, out var spoolWeight);
             decimal.TryParse(PartWeight, out var partWeight);
@@ -88,8 +137,41 @@ namespace MAUISpec.Controllers
                 .Assemble();
 
             PartCost = _plasticCostCalculator
-                .Calculate(partWeight)
-                .ToString("C2", CultureInfo.CreateSpecificCulture("en-US"));
+                .CalculateByWeight(partWeight)
+                .ToString("C2", _cultureInfo);
+        }
+
+        private void CalculateByLength()
+        {
+            decimal.TryParse(SpoolLength, out var spoolLength);
+            decimal.TryParse(PartLength, out var partLength);
+            decimal.TryParse(SpoolCost, out var spoolCost);
+            decimal.TryParse(TaxRate, out var taxRate);
+
+            var spool = new SpoolBuilder()
+                .WithSpoolCost(spoolCost)
+                .WithTaxRate(taxRate)
+                .WithSpoolLength(spoolLength)
+                .Assemble();
+
+            _plasticCostCalculator = new PlasticCostCalculatorBuilder()
+                .WithSpool(spool)
+                .Assemble();
+
+            PartCost = _plasticCostCalculator
+                .CalculateByLength(partLength)
+                .ToString("C2", _cultureInfo);
+        }
+
+        internal void Calculate()
+        {
+            if (_calculatePriceByWeight)
+            {
+                CalculateByWeight();
+                return;
+            }
+
+            CalculateByLength();
         }
 
         /// <summary>

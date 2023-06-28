@@ -1,4 +1,5 @@
-﻿using MAUISpec.Controllers;
+﻿using CommunityToolkit.Maui.Core;
+using MAUISpec.Controllers;
 
 namespace MAUISpec;
 
