@@ -1,4 +1,4 @@
-﻿namespace PlasticCost
+﻿namespace PlasticCost.FilamentCalculator
 {
     public class SpoolBuilder
     {

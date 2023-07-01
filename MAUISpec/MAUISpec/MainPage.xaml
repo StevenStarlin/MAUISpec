@@ -1,116 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:MAUISpec"
+             xmlns:pages="clr-namespace:MAUISpec.Pages"
              x:Class="MAUISpec.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <TabBar>
+        <ShellContent>
+            <VerticalStackLayout
+                    Spacing="25"
+                    Padding="30,0"
+                    VerticalOptions="Center">
 
-            <Label
-                Text="Spool Cost (USD)"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Entry
-                Text="{Binding SpoolCost}"
-                FontSize="18"
-                HorizontalOptions="FillAndExpand"
-                HorizontalTextAlignment="Center" />
-
-            <Label
-                Text="Tax Rate (%)"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Entry
-                Text="{Binding TaxRate}"
-                FontSize="18"
-                HorizontalOptions="FillAndExpand"
-                HorizontalTextAlignment="Center" />
-
-            <Label 
-                Text="Calculate by weight:"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="18"
-                HorizontalOptions="Start" />
-            
-            <Switch x:Name="switchByWeight" IsToggled="{Binding CalculatePriceByWeight}"/>
-
-            <VerticalStackLayout IsVisible="{Binding CalculatePriceByWeight}">
                 <Label
-                        Text="Part Weight (g)"
+                        Text="Spool Cost (USD)"
                         SemanticProperties.HeadingLevel="Level1"
                         FontSize="18"
                         HorizontalOptions="Center" />
 
                 <Entry
-                        Text="{Binding PartWeight}"
+                        Text="{Binding SpoolCost}"
                         FontSize="18"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center" />
 
                 <Label
-                        Text="Spool Weight (g)"
+                        Text="Tax Rate (%)"
                         SemanticProperties.HeadingLevel="Level1"
                         FontSize="18"
                         HorizontalOptions="Center" />
 
                 <Entry
-                        Text="{Binding SpoolWeight}"
+                        Text="{Binding TaxRate}"
                         FontSize="18"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center" />
-            </VerticalStackLayout>
 
-            <VerticalStackLayout IsVisible="{Binding HideCalculateByLength}">
-                <Label
-                        Text="Part Length (m)"
+                <Label 
+                        Text="Calculate by weight:"
                         SemanticProperties.HeadingLevel="Level1"
                         FontSize="18"
-                        HorizontalOptions="Center"
-                        Margin="0, 20, 0, 0"/>
+                        HorizontalOptions="Start" />
 
-                <Entry
-                        Text="{Binding PartLength}"
-                        FontSize="18"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center" />
+                <Switch x:Name="switchByWeight" IsToggled="{Binding CalculatePriceByWeight}"/>
+
+                <VerticalStackLayout IsVisible="{Binding CalculatePriceByWeight}">
+                    <Label
+                            Text="Part Weight (g)"
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18"
+                            HorizontalOptions="Center" />
+
+                    <Entry
+                            Text="{Binding PartWeight}"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center" />
+
+                    <Label
+                            Text="Spool Weight (g)"
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18"
+                            HorizontalOptions="Center" />
+
+                    <Entry
+                            Text="{Binding SpoolWeight}"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout IsVisible="{Binding HideCalculateByLength}">
+                    <Label
+                            Text="Part Length (m)"
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Margin="0, 20, 0, 0"/>
+
+                    <Entry
+                            Text="{Binding PartLength}"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center" />
+
+                    <Label
+                            Text="Spool Length (m)"
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Margin="0, 20, 0, 0"/>
+
+                    <Entry
+                            Text="{Binding SpoolLength}"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <Button
+                        x:Name="CounterBtn"
+                        Text="Calculate"
+                        SemanticProperties.Hint="Counts the number of times you click"
+                        Clicked="OnCalculateClicked"
+                        HorizontalOptions="Center" />
 
                 <Label
-                        Text="Spool Length (m)"
-                        SemanticProperties.HeadingLevel="Level1"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Margin="0, 20, 0, 0"/>
-
-                <Entry
-                        Text="{Binding SpoolLength}"
-                        FontSize="18"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center" />
+                        Text="{Binding PartCost}"
+                        SemanticProperties.HeadingLevel="Level2"
+                        SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                        FontSize="32"
+                        HorizontalOptions="Center" />
             </VerticalStackLayout>
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Calculate"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCalculateClicked"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="{Binding PartCost}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
-
-</ContentPage>
+        </ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate pages:ResinCalculatorView}" />
+    </TabBar>
+</Shell>

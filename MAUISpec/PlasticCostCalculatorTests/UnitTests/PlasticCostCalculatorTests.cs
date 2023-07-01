@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using PlasticCost;
+using PlasticCost.FilamentCalculator;
 
 namespace PlasticCostCalculatorTests.UnitTests
 {

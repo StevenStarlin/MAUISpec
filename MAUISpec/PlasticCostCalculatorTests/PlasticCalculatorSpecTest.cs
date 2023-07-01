@@ -1,5 +1,6 @@
 using FluentAssertions;
-using PlasticCost;
+using PlasticCost.FilamentCalculator;
+using PlasticCost.ResinCalculator;
 
 namespace PlasticCostCalculatorTests
 {
@@ -69,6 +70,29 @@ namespace PlasticCostCalculatorTests
             // Assert
             spoolCostFromLength.Should().Be(0.053m);
             partCostFromLength.Should().Be(1.59m);
+        }
+
+        [Fact]
+        public void CalculateResinCostByVolume()
+        {
+            // Arrange
+            var resinBottle = new ResinBottleBuilder()
+                .WithPrice(30m)
+                .WithVolume(1000m)
+                .WithTax(10m)
+                .Assemble();
+
+            var resinCostCalculator = new ResinCostCalculatorBuilder()
+                .WithBottle(resinBottle)
+                .Assemble();
+
+            // Act
+            var bottleCost = resinBottle.Calculate();
+            var partCost = resinCostCalculator.Calculate(59m);
+
+            // Assert
+            bottleCost.Should().Be(0.033m);
+            partCost.Should().Be(1.947m);
         }
     }
 }

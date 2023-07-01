@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUISpec", "MAUISpec\MAUISpec.csproj", "{9C06224F-CEA4-49EF-91E1-C03574AC7A8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCostCalculatorTests", "PlasticCostCalculatorTests\PlasticCostCalculatorTests.csproj", "{A50B8BBD-CDB8-406A-BB12-FD502A506613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlasticCostCalculatorTests", "PlasticCostCalculatorTests\PlasticCostCalculatorTests.csproj", "{A50B8BBD-CDB8-406A-BB12-FD502A506613}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCost", "PlasticCost\PlasticCost.csproj", "{82AA287B-03EC-4EE0-B820-D94C823BF22C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlasticCost", "PlasticCost\PlasticCost.csproj", "{82AA287B-03EC-4EE0-B820-D94C823BF22C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketTools", "PocketTools\PocketTools.csproj", "{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,12 @@ Global
 		{82AA287B-03EC-4EE0-B820-D94C823BF22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82AA287B-03EC-4EE0-B820-D94C823BF22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82AA287B-03EC-4EE0-B820-D94C823BF22C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2E6CDA-CA71-44A9-9B19-84D8DFC1473C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
